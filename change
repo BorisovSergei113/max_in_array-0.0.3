@@ -1,0 +1,59 @@
+#include <iostream>
+#include <sstream>
+
+using namespace std;
+
+int main()
+{
+    int max = 0;
+    int max1= 0;
+    int mas1 [10];
+    int mas2 [10];
+    for (string string; getline(cin, string); )
+    {
+        istringstream stream(string);
+        bool failure = false;
+        for (int i = 0; i < 10; i++)
+        {
+            if ( ! (stream >> mas1 [i]))
+            {
+                failure = true;
+                break;
+            }
+        }
+        if ( failure==false )
+        break;
+        else
+            cout << "An error has occured while reading numbers from line" << '\n';
+    }
+    for (string string; getline(cin, string); )
+    {
+        istringstream stream(string);
+        bool failure = false;
+        for (int y = 0; y < 10; y++)
+        {
+            if ( ! (stream >> mas2 [y])) {
+                failure = true;
+                break;
+            }
+        }
+        if (failure==false)
+        {   max1=mas1[0];
+            max=max1+mas2[0];
+            for( int i = 0 ; i < 10; i++ )
+            {
+                if( max1 < mas1[i] )
+                    max1 = mas1[i];
+                if(max<max1+mas2[i])
+                    max=max1+mas2[i];
+            }
+        break;
+        }
+        else
+        cout << "An error has occured while reading numbers from line" << '\n';
+    }
+    
+    cout << max << '\n';
+    
+    return 0;
+}
